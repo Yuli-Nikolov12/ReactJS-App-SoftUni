@@ -1,18 +1,10 @@
-import { useState } from 'react'
+import Home from "./components/Home";
 
-function App() {
-  const [count, setCount] = useState(0)
+export default function App() {
 
   return (
     <>
-      <h1>Vite + React!</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-      </div>
+      <Home />
     </>
   )
 }
-
-export default App
