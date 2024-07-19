@@ -4,9 +4,9 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 const navigation = [
-    { name: 'All Product', href: '#' },
-    { name: 'Your Products', href: '#' },
-    { name: 'About Us', href: '#' },
+    { name: 'All Product', to: '#' },
+    { name: 'Your Products', to: '#' },
+    { name: 'About Us', to: '/aboutUs' },
   ]
 
 
@@ -38,9 +38,9 @@ export default function Header() {
           </div>
           <div className="hidden lg:flex lg:gap-x-12">
             {navigation.map((item) => (
-              <a key={item.name} href={item.href} className="text-sm font-semibold leading-6 text-gray-300">
+              <Link key={item.name} to={item.to} className="text-sm font-semibold leading-6 text-gray-300">
                 {item.name}
-              </a>
+              </Link>
             ))}
           </div>
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">

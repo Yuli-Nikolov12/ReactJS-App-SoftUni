@@ -4,6 +4,7 @@ import Header from './components/Header'
 import NotFoundPage from "./components/NotFoundPage";
 import Login from './components/Login';
 import Register from './components/Register';
+import AboutUs from './components/AboutUs';
 
 export default function App() {
 
@@ -16,6 +17,7 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/aboutUs" element={<AboutUs />} />
         </Routes>
       </div>
   )
