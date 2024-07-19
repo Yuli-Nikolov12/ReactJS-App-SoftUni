@@ -1,3 +1,5 @@
+import { ReactTyped } from "react-typed"
+
 export default function Home() {
 
   return (
@@ -18,12 +20,12 @@ export default function Home() {
           <div className="relative rounded-full px-3 py-2 hidden sm:mb-8 sm:flex sm:justify-center">
           </div>
           <div className="text-center">
-            <h1 className="text-4xl font-bold tracking-tight text-gray-300 sm:text-6xl">
+            <h1 className="text-3xl font-bold tracking-tight text-gray-300 sm:text-6xl">
               Online Catalog for finding greate products and create one!
             </h1>
             <p className="mt-6 text-lg leading-8 text-gray-300">
-              Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet
-              fugiat veniam occaecat fugiat aliqua.
+              Here you can find the right product for your 
+              <ReactTyped className="pl-1" strings={['Home','Garden','Work']} typeSpeed={130} backSpeed={140} loop/>
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <a
