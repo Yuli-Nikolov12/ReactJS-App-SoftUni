@@ -1,11 +1,12 @@
-import { Routes, Route} from 'react-router-dom'
-import Home from "./components/Home";
-import Header from './components/Header'
+import { Routes, Route } from 'react-router-dom'
+import Home from "./components/home/Home";
+import Header from './components/header/Header'
 import NotFoundPage from "./components/NotFoundPage";
-import Login from './components/Login';
-import Register from './components/Register';
-import AboutUs from './components/AboutUs';
-import ProductList from './components/ProductList';
+import Login from './components/login/Login';
+import Register from './components/register/Register';
+import AboutUs from './components/aboutPage/AboutUs';
+import ProductList from './components/products/ProductList';
+import ProductItem from './components/products/ProductItem';
 
 export default function App() {
 
@@ -20,6 +21,7 @@ export default function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/all-products" element={<ProductList />} />
+          <Route path="/all-products/details" element={<ProductItem />} />
         </Routes>
       </div>
   )

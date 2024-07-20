@@ -1,9 +1,10 @@
+import { Link } from "react-router-dom"
 
 const products = [
     {
       id: 1,
       name: 'Iphone 15',
-      href: '#',
+      to: '/all-products/details',
       price: '$1699',
       imageSrc: 'https://target.scene7.com/is/image/Target/GUEST_3eb61873-2d74-4a1f-958d-11bf2aed5cce?qlt=65&fmt=pjpeg&hei=350&wid=350',
       imageAlt: 'Tall slender porcelain bottle with natural clay textured body and cork stopper.',
@@ -11,7 +12,7 @@ const products = [
     {
       id: 2,
       name: 'Nomad Tumbler',
-      href: '#',
+      to: '/all-products/details',
       price: '$35',
       imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-02.jpg',
       imageAlt: 'Olive drab green insulated bottle with flared screw lid and flat top.',
@@ -19,7 +20,7 @@ const products = [
     {
       id: 3,
       name: 'Focus Paper Refill',
-      href: '#',
+      to: '/all-products/details',
       price: '$89',
       imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-03.jpg',
       imageAlt: 'Person using a pen to cross a task off a productivity paper card.',
@@ -27,7 +28,7 @@ const products = [
     {
       id: 4,
       name: 'Machined Mechanical Pencil',
-      href: '#',
+      to: '/all-products/details',
       price: '$35',
       imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-04.jpg',
       imageAlt: 'Hand holding black machined steel mechanical pencil with brass tip and top.',
@@ -35,7 +36,7 @@ const products = [
     {
         id: 5,
         name: 'Machined Mechanical Pencil',
-        href: '#',
+        to: '/all-products/details',
         price: '$35',
         imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-04.jpg',
         imageAlt: 'Hand holding black machined steel mechanical pencil with brass tip and top.',
@@ -43,7 +44,7 @@ const products = [
       {
         id: 6,
         name: 'Machined Mechanical Pencil',
-        href: '#',
+        to: '/all-products/details',
         price: '$35',
         imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-04.jpg',
         imageAlt: 'Hand holding black machined steel mechanical pencil with brass tip and top.',
@@ -71,7 +72,7 @@ const products = [
         <h2 className="pb-10 text-4xl font-bold tracking-tight text-gray-300">All Products</h2>
           <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
             {products.map((product) => (
-              <a key={product.id} href={product.href} className="group">
+              <Link key={product.id} to={product.to} className="group">
                 <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
                   <img
                     alt={product.imageAlt}
@@ -81,7 +82,7 @@ const products = [
                 </div>
                 <h3 className="mt-4 text-sm text-gray-300">{product.name}</h3>
                 <p className="mt-1 text-lg font-medium text-gray-300">{product.price}</p>
-              </a>
+              </Link>
             ))}
           </div>
         </div>

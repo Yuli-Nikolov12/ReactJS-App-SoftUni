@@ -1,5 +1,5 @@
-import { Dialog, DialogPanel } from '@headlessui/react'
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import {  Dialog, DialogPanel } from '@headlessui/react'
+import { Bars3Icon, XMarkIcon, MoonIcon } from '@heroicons/react/24/outline'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
@@ -45,6 +45,13 @@ export default function Header() {
             ))}
           </div>
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+                <button
+                type="button"
+                className="pr-10 -m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-300"
+                >
+                  <span className="sr-only">Dark menu</span>
+                  <MoonIcon aria-hidden="true" className="h-6 w-6" />
+                </button>
             <Link to="/login" className="text-sm font-semibold leading-6 text-gray-300">
               Log in <span aria-hidden="true">&rarr;</span>
             </Link>
