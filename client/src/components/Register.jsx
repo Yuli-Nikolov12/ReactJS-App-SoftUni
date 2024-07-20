@@ -70,7 +70,7 @@ export default function Register() {
                         </div>
                         <div className="mt-2">
                         <input
-                            id="password"
+                            id="confirm-password"
                             name="password"
                             type="password"
                             required

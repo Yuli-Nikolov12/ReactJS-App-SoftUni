@@ -4,9 +4,10 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 const navigation = [
-    { name: 'All Product', to: '#' },
+    { name: 'Home', to: '/' },
+    { name: 'All Product', to: '/all-products' },
     { name: 'Your Products', to: '#' },
-    { name: 'About Us', to: '/aboutUs' },
+    { name: 'About Us', to: '/about-us' },
   ]
 
 
