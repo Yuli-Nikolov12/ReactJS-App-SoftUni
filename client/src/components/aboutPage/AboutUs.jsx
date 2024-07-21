@@ -1,4 +1,6 @@
-import { ReactTyped } from "react-typed"
+import { ReactTyped } from "react-typed";
+import { useContext } from 'react';
+import { ThemeModeContext } from '../../contexts/ThemeContext';
 
   const stats = [
     { name: 'Offices worldwide', value: '12' },
@@ -8,8 +10,10 @@ import { ReactTyped } from "react-typed"
   ]
   
   export default function AboutUs() {
+    const [mode, setMode] = useContext(ThemeModeContext);
+
     return (
-      <div className="relative isolate min-h-screen overflow-hidden bg-gray-900 py-24 sm:py-32">
+      <div className="relative isolate min-h-screen overflow-hidden py-24 sm:py-32">
         <div
           aria-hidden="true"
           className="hidden sm:absolute sm:-top-10 sm:right-1/2 sm:-z-10 sm:mr-10 sm:block sm:transform-gpu sm:blur-3xl"
@@ -36,14 +40,14 @@ import { ReactTyped } from "react-typed"
         </div>
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl lg:mx-0">
-            <h2 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">About Us Page</h2>
-            <p className="mt-6 text-lg leading-8 text-gray-300">
+            <h2 className={`text-4xl font-bold tracking-tight text-${mode=== false? "white" : "black"} sm:text-6xl`}>About Us Page</h2>
+            <p className={`mt-6 text-lg leading-8 text-gray-${mode=== false? "300" : "900"}`}>
             Our mission is to provide high-quality, innovative products that enhance your lifestyle. We strive to bring you the latest trends and timeless classics that help transform your spaces into havens of comfort and creativity. Whether you're decorating your home, designing your garden, or outfitting your office, our products are designed to meet your needs and exceed your expectations.
             </p>
-            <p className="mt-6 text-lg leading-8 text-gray-300">
+            <p className={`mt-6 text-lg leading-8 text-gray-${mode=== false? "300" : "900"}`}>
                 We invite you to join our growing family of satisfied customers who share our passion for creating beautiful and functional spaces. 
             </p>
-            <p className="mt-6 text-lg leading-8 text-gray-300">
+            <p className={`mt-6 text-lg leading-8 text-gray-${mode=== false? "300" : "900"}`}>
                 Thank you for choosing us. We look forward to helping you create the home, garden, and workspace of your dreams.
             </p>
           </div>
@@ -51,8 +55,8 @@ import { ReactTyped } from "react-typed"
             <dl className="mt-16 grid grid-cols-1 gap-8 sm:mt-20 sm:grid-cols-2 lg:grid-cols-4">
               {stats.map((stat) => (
                 <div key={stat.name} className="flex flex-col-reverse">
-                  <dt className="text-base leading-7 text-gray-300">{stat.name}</dt>
-                  <dd className="text-2xl font-bold leading-9 tracking-tight text-white"><ReactTyped strings={[`${stat.value}`]} typeSpeed={130} showCursor={false} /></dd>
+                  <dt className={`text-base leading-7 text-gray-${mode=== false? "300" : "900"}`}>{stat.name}</dt>
+                  <dd className={`text-2xl font-bold leading-9 tracking-tight text-${mode=== false? "white" : "black"}`}><ReactTyped strings={[`${stat.value}`]} typeSpeed={130} showCursor={false} /></dd>
                 </div>
               ))}
             </dl>

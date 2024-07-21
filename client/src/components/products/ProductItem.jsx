@@ -1,5 +1,10 @@
+import { useContext } from 'react';
+import { ThemeModeContext } from '../../contexts/ThemeContext';
+
 export default function ProductItem()
 {
+    const [mode, setMode] = useContext(ThemeModeContext);
+
     return(
         <div className="relative isolate pt-10 min-h-screen">
             <div
@@ -15,7 +20,7 @@ export default function ProductItem()
                 />
             </div>
             <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-                <h2 className="pb-10 text-4xl font-bold tracking-tight text-gray-300">Product Details</h2>
+                <h2 className={`pb-10 text-4xl font-bold tracking-tight text-gray-${mode=== false? "300" : "900"}`}>Product Details</h2>
 
             </div>
         </div>

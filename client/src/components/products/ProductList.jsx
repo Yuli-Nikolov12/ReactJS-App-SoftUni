@@ -1,4 +1,6 @@
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
+import { useContext } from 'react';
+import { ThemeModeContext } from '../../contexts/ThemeContext';
 
 const products = [
     {
@@ -53,6 +55,8 @@ const products = [
   ]
   
   export default function ProductList() {
+    const [mode, setMode] = useContext(ThemeModeContext);
+
     return (
       <div className="relative isolate pt-10 min-h-screen">
         <div
@@ -69,7 +73,7 @@ const products = [
         </div>
         
         <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-        <h2 className="pb-10 text-4xl font-bold tracking-tight text-gray-300">All Products</h2>
+        <h2 className={`pb-10 text-4xl font-bold tracking-tight text-gray-${mode=== false? "300" : "900"}`}>All Products</h2>
           <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
             {products.map((product) => (
               <Link key={product.id} to={product.to} className="group">
@@ -80,8 +84,8 @@ const products = [
                     className="h-full w-full object-cover object-center group-hover:opacity-75"
                   />
                 </div>
-                <h3 className="mt-4 text-sm text-gray-300">{product.name}</h3>
-                <p className="mt-1 text-lg font-medium text-gray-300">{product.price}</p>
+                <h3 className={`mt-4 text-sm text-gray-${mode=== false? "300" : "900"}`}>{product.name}</h3>
+                <p className={`mt-1 text-lg font-medium text-gray-${mode=== false? "300" : "900"}`}>{product.price}</p>
               </Link>
             ))}
           </div>
