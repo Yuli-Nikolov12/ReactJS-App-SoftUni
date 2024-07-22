@@ -1,12 +1,13 @@
 import { ReactTyped } from "react-typed";
 import { useContext } from 'react';
 import { ThemeModeContext } from '../../contexts/ThemeContext';
+import { Link } from "react-router-dom";
 
 export default function Home() {
   const [mode, setMode] = useContext(ThemeModeContext);
 
   return (
-      <div className="relative isolate min-h-screen px-6 pt-14 lg:px-8">
+      <div className="relative isolate min-h-screen px-6 pt-5 lg:px-8">
         <div
           aria-hidden="true"
           className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
@@ -31,12 +32,12 @@ export default function Home() {
               <ReactTyped className="pl-1" strings={['Home','Garden','Work']} typeSpeed={130} backSpeed={140} loop/>
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
-              <a
-                href="#"
+              <Link
+                to="/product-create"
                 className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
-                Get started
-              </a>
+                Create Product
+              </Link>
             </div>
           </div>
         </div>

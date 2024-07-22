@@ -6,10 +6,11 @@ import Register from '../register/Register';
 import AboutUs from '../aboutPage/AboutUs';
 import ProductList from '../products/ProductList';
 import ProductDetails from '../products/ProductDetails';
+import ProductCreate from "../product-create/ProductCreate";
+import { ThemeModeContext } from '../../contexts/ThemeContext';
 
 import { Routes, Route } from 'react-router-dom';
 import { useContext } from 'react';
-import { ThemeModeContext } from '../../contexts/ThemeContext';
 
 export default function ThemeWrapper()
 {
@@ -19,13 +20,14 @@ export default function ThemeWrapper()
             <Header />
             
             <Routes>
-            <Route path="*" element={<NotFoundPage />} />
-            <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/about-us" element={<AboutUs />} />
-            <Route path="/all-products" element={<ProductList />} />
-            <Route path="/all-products/:productId/details" element={<ProductDetails />} />
+                <Route path="*" element={<NotFoundPage />} />
+                <Route path="/" element={<Home />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
+                <Route path="/about-us" element={<AboutUs />} />
+                <Route path="/all-products" element={<ProductList />} />
+                <Route path="/all-products/:productId/details" element={<ProductDetails />} />
+                <Route path="/product-create" element={<ProductCreate />} />
             </Routes>
         </div>
     );

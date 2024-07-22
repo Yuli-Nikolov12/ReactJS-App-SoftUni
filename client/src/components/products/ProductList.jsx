@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
+import { Link } from "react-router-dom";
 
 import { ThemeModeContext } from '../../contexts/ThemeContext';
 import Spinner from "../Spinner";
@@ -38,7 +39,14 @@ import productsAPI from "../../api/products-api";
         </div>
         
         <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-        <h2 className={`pb-10 text-4xl font-bold tracking-tight text-gray-${mode=== false? "300" : "900"}`}>All Products</h2>
+        <h2 className={`pb-10 text-4xl font-bold tracking-tight text-gray-${mode=== false? "300" : "900"}`}>All Products<span className='pl-5'></span>
+               <Link
+                to="/product-create"
+                className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              >
+                Create Product
+              </Link>
+        </h2>
             {isFetching ? 
               <Spinner />
               :

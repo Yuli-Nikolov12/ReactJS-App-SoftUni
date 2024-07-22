@@ -54,7 +54,7 @@ export default function ProductDetails()
 
                         <div className="flex flex-wrap gap-4 mt-8">
                             <p className={`text-gray-${mode=== false? "300" : "900"} text-3xl font-bold`}>{product.price}</p>
-                            <p className="text-gray-400 text-base"><strike>{String(numberTax)}</strike> <span className="text-sm ml-1">Tax included</span></p>
+                            <p className="text-gray-400 text-base"><strike>{'$'+String(numberTax)}</strike> <span className="text-sm ml-1">Tax included</span></p>
                         </div>
 
                         <div className="flex flex-wrap gap-4 mt-8">

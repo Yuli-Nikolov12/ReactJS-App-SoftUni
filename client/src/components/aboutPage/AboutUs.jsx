@@ -40,7 +40,7 @@ import { ThemeModeContext } from '../../contexts/ThemeContext';
         </div>
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl lg:mx-0">
-            <h2 className={`text-4xl font-bold tracking-tight text-${mode=== false? "white" : "black"} sm:text-6xl`}>About Us Page</h2>
+            <h2 className={`text-4xl font-bold tracking-tight text-${mode=== false? "white" : "black"} sm:text-6xl`}>About Us</h2>
             <p className={`mt-6 text-lg leading-8 text-gray-${mode=== false? "300" : "900"}`}>
             Our mission is to provide high-quality, innovative products that enhance your lifestyle. We strive to bring you the latest trends and timeless classics that help transform your spaces into havens of comfort and creativity. Whether you're decorating your home, designing your garden, or outfitting your office, our products are designed to meet your needs and exceed your expectations.
             </p>
