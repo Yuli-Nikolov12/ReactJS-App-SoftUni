@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
+
 import { ThemeModeContext } from '../../contexts/ThemeContext';
 import Spinner from "../Spinner";
 import ProductItem from "./ProductItem";
@@ -8,14 +9,14 @@ import productsAPI from "../../api/products-api";
   
   export default function ProductList() {
     const [mode, setMode] = useContext(ThemeModeContext);
-    const [product, setProduct] = useState([]);
+    const [products, setProducts] = useState([]);
     const [isFetching, setIsFetching] = useState(true);
 
     useEffect(() => {
       (async () => {
         const result = await productsAPI.allProducts();
 
-        setProduct(result);
+        setProducts(result);
         setIsFetching(false);
       }
       )();
@@ -41,11 +42,11 @@ import productsAPI from "../../api/products-api";
             {isFetching ? 
               <Spinner />
               :
-              <>
-                {product.length > 0 ? product.map(product => <ProductItem key={product.id} {...product}/>) 
+              <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+                {products.length > 0 ? products.map(product => <ProductItem key={product._id} {...product}/>) 
                 : 
-                <h3 className={`pt-20 text-3xl text-center font-bold tracking-tight text-gray-${mode=== false? "200" : "900"}`}>There are no products yet!</h3>}
-              </>
+                <h3 className={`absolute italic pt-20 text-2xl font-bold tracking-tight text-gray-${mode=== false? "200" : "900"}`}>There are no products yet!</h3>}
+              </div>
             }
         </div>
       </div>
