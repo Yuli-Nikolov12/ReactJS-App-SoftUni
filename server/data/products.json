@@ -1,0 +1,36 @@
+{
+    "products":{
+          "1": {
+            "id": 1,
+            "name": "Iphone 15",
+            "to": "/all-products/details",
+            "price": "$1699",
+            "imageSrc": "https://target.scene7.com/is/image/Target/GUEST_3eb61873-2d74-4a1f-958d-11bf2aed5cce?qlt=65&fmt=pjpeg&hei=350&wid=350",
+            "imageAlt": "Tall slender porcelain bottle with natural clay textured body and cork stopper."
+          },
+          "2": {
+            "id": 2,
+            "name": "Nomad Tumbler",
+            "to": "/all-products/details",
+            "price": "$35",
+            "imageSrc": "https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-02.jpg",
+            "imageAlt": "Olive drab green insulated bottle with flared screw lid and flat top."
+          },
+          "3": {
+            "id": 3,
+            "name": "Focus Paper Refill",
+            "to": "/all-products/details",
+            "price": "$89",
+            "imageSrc": "https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-03.jpg",
+            "imageAlt": "Person using a pen to cross a task off a productivity paper card."
+          },
+          "4": {
+            "id": 4,
+            "name": "Machined Mechanical Pencil",
+            "to": "/all-products/details",
+            "price": "$35",
+            "imageSrc": "https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-04.jpg",
+            "imageAlt": "Hand holding black machined steel mechanical pencil with brass tip and top."
+          }
+    }
+}

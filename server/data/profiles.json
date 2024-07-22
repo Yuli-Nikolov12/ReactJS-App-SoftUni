@@ -1,0 +1,16 @@
+{
+    "profiles": {
+        "fb352199-bcbc-4e1d-a1dc-ed346a6fb49a": {
+            "_id": "fb352199-bcbc-4e1d-a1dc-ed346a6fb49a",
+            "username": "Admin",
+            "email": "admin@admin.com",
+            "password": "admin"
+        },
+        "4fccdb3a-59c9-4e45-a28f-870fe5d1d8be": {
+            "_id": "4fccdb3a-59c9-4e45-a28f-870fe5d1d8be",
+            "username": "Peter",
+            "email": "test@test.bg",
+            "password": "test123"
+        }
+    }
+}

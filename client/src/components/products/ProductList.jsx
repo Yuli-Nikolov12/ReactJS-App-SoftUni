@@ -1,61 +1,25 @@
-import { Link } from "react-router-dom";
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { ThemeModeContext } from '../../contexts/ThemeContext';
+import Spinner from "../Spinner";
+import ProductItem from "./ProductItem";
+import productsAPI from "../../api/products-api";
 
-const products = [
-    {
-      id: 1,
-      name: 'Iphone 15',
-      to: '/all-products/details',
-      price: '$1699',
-      imageSrc: 'https://target.scene7.com/is/image/Target/GUEST_3eb61873-2d74-4a1f-958d-11bf2aed5cce?qlt=65&fmt=pjpeg&hei=350&wid=350',
-      imageAlt: 'Tall slender porcelain bottle with natural clay textured body and cork stopper.',
-    },
-    {
-      id: 2,
-      name: 'Nomad Tumbler',
-      to: '/all-products/details',
-      price: '$35',
-      imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-02.jpg',
-      imageAlt: 'Olive drab green insulated bottle with flared screw lid and flat top.',
-    },
-    {
-      id: 3,
-      name: 'Focus Paper Refill',
-      to: '/all-products/details',
-      price: '$89',
-      imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-03.jpg',
-      imageAlt: 'Person using a pen to cross a task off a productivity paper card.',
-    },
-    {
-      id: 4,
-      name: 'Machined Mechanical Pencil',
-      to: '/all-products/details',
-      price: '$35',
-      imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-04.jpg',
-      imageAlt: 'Hand holding black machined steel mechanical pencil with brass tip and top.',
-    },
-    {
-        id: 5,
-        name: 'Machined Mechanical Pencil',
-        to: '/all-products/details',
-        price: '$35',
-        imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-04.jpg',
-        imageAlt: 'Hand holding black machined steel mechanical pencil with brass tip and top.',
-      },
-      {
-        id: 6,
-        name: 'Machined Mechanical Pencil',
-        to: '/all-products/details',
-        price: '$35',
-        imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-04.jpg',
-        imageAlt: 'Hand holding black machined steel mechanical pencil with brass tip and top.',
-      },
-    // More products...
-  ]
+
   
   export default function ProductList() {
     const [mode, setMode] = useContext(ThemeModeContext);
+    const [product, setProduct] = useState([]);
+    const [isFetching, setIsFetching] = useState(true);
+
+    useEffect(() => {
+      (async () => {
+        const result = await productsAPI.allProducts();
+
+        setProduct(result);
+        setIsFetching(false);
+      }
+      )();
+    },[]);
 
     return (
       <div className="relative isolate pt-10 min-h-screen">
@@ -74,21 +38,15 @@ const products = [
         
         <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
         <h2 className={`pb-10 text-4xl font-bold tracking-tight text-gray-${mode=== false? "300" : "900"}`}>All Products</h2>
-          <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-            {products.map((product) => (
-              <Link key={product.id} to={product.to} className="group">
-                <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
-                  <img
-                    alt={product.imageAlt}
-                    src={product.imageSrc}
-                    className="h-full w-full object-cover object-center group-hover:opacity-75"
-                  />
-                </div>
-                <h3 className={`mt-4 text-sm text-gray-${mode=== false? "300" : "900"}`}>{product.name}</h3>
-                <p className={`mt-1 text-lg font-medium text-gray-${mode=== false? "300" : "900"}`}>{product.price}</p>
-              </Link>
-            ))}
-          </div>
+            {isFetching ? 
+              <Spinner />
+              :
+              <>
+                {product.length > 0 ? product.map(product => <ProductItem key={product.id} {...product}/>) 
+                : 
+                <h3 className={`pt-20 text-3xl text-center font-bold tracking-tight text-gray-${mode=== false? "200" : "900"}`}>There are no products yet!</h3>}
+              </>
+            }
         </div>
       </div>
     )
