@@ -1,39 +1,54 @@
 {
   "products":{
-      "9319b485-4753-4335-8c00-9f5064d8b6ec": {
+    "a34d9c11-4814-4cc8-b19b-a9fbd9f118e0": {
         "name": "Iphone 15",
         "price": "$1699",
         "imageSrc": "https://target.scene7.com/is/image/Target/GUEST_3eb61873-2d74-4a1f-958d-11bf2aed5cce?qlt=65&fmt=pjpeg&hei=350&wid=350",
         "imageAlt": "Tall slender porcelain bottle with natural clay textured body and cork stopper.",
-        "_id": "9319b485-4753-4335-8c00-9f5064d8b6ec"
+        "details": {
+            "content": "The iPhone 15 represents the latest innovation from Apple, combining cutting-edge technology with sleek design. It continues the legacy of its predecessors with enhanced performance, camera capabilities, and user experience."
+        },
+        "_id": "a34d9c11-4814-4cc8-b19b-a9fbd9f118e0"
     },
-    "96e789b7-0c48-4f9a-bcb9-0838fb37119d": {
+    "b61c48a7-a962-4926-9598-92016af148c1": {
         "name": "Nomad Tumbler",
         "price": "$35",
         "imageSrc": "https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-02.jpg",
         "imageAlt": "Olive drab green insulated bottle with flared screw lid and flat top.",
-        "_id": "96e789b7-0c48-4f9a-bcb9-0838fb37119d"
+        "details": {
+            "content": "The Nomad Tumbler is a premium, travel-friendly beverage container designed for those on the go. It combines rugged durability with modern aesthetics, perfect for both urban and outdoor adventures."
+        },
+        "_id": "b61c48a7-a962-4926-9598-92016af148c1"
     },
-    "4ad0974e-5664-4ce7-8621-60565b6ca7b8": {
+    "d8a609b4-e313-4dd2-a2b0-5de775e880bc": {
         "name": "Focus Paper Refill",
         "price": "$89",
         "imageSrc": "https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-03.jpg",
         "imageAlt": "Person using a pen to cross a task off a productivity paper card.",
-        "_id": "4ad0974e-5664-4ce7-8621-60565b6ca7b8"
+        "details": {
+            "content": "The Focus Paper Refill is designed for the Focus Planner, providing high-quality, premium paper for those who value organization and productivity."
+        },
+        "_id": "d8a609b4-e313-4dd2-a2b0-5de775e880bc"
     },
-    "3b2fbb39-dd91-47e4-935d-88bd60d92d0d": {
+    "381a98cb-d616-4b6c-af9e-3b313a626b8f": {
         "name": "Machined Mechanical Pencil",
         "price": "$35",
         "imageSrc": "https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-04.jpg",
         "imageAlt": "Hand holding black machined steel mechanical pencil with brass tip and top.",
-        "_id": "3b2fbb39-dd91-47e4-935d-88bd60d92d0d"
+        "details": {
+            "content": "The Machined Mechanical Pencil is a precision writing instrument, crafted for professionals and enthusiasts who appreciate fine engineering and durability."
+        },
+        "_id": "381a98cb-d616-4b6c-af9e-3b313a626b8f"
     },
-    "ebf871c9-247a-4f4c-ab42-7ff5131d9dc8": {
+    "c5d23e33-6302-4ff9-927b-85ed0a3e5fa5": {
         "name": "Iphone 14 Pro",
         "price": "$1499",
         "imageSrc": "https://s13emagst.akamaized.net/products/48592/48591223/images/res_0a49cd835e308621c4ce9f501418d2a5.jpg",
         "imageAlt": "Iphone 14",
-        "_id": "ebf871c9-247a-4f4c-ab42-7ff5131d9dc8"
+        "details": {
+            "content": "The iPhone 14 Pro is a high-performance smartphone from Apple, offering a robust set of features aimed at providing an exceptional user experience, particularly for photography enthusiasts and power users."
+        },
+        "_id": "c5d23e33-6302-4ff9-927b-85ed0a3e5fa5"
     }
   }
 }
