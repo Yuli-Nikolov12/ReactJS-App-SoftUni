@@ -1,10 +1,10 @@
 import { useContext, useEffect, useState } from 'react';
-
-import { ThemeModeContext } from '../../contexts/ThemeContext';
-import productsAPI from '../../api/products-api';
 import { useParams } from 'react-router-dom';
-import Modal from '../modal/Modal';
+
+import productsAPI from '../../api/products-api';
 import commentsApi from '../../api/comments-api';
+import { ThemeModeContext } from '../../contexts/ThemeContext';
+import Modal from '../modal/Modal';
 
 export default function ProductDetails()
 {
@@ -72,7 +72,7 @@ export default function ProductDetails()
                         <h2 className={`text-2xl font-extrabold text-gray-${mode=== false ? "300" : "900"}`}>{product.name}</h2>
 
                         <div className="flex space-x-2 mt-4">
-                            <h4 className={`text-gray-${mode=== false ? "300" : "900"} text-base`}>Top Product</h4>
+                            <h4 className={`text-gray-${mode=== false ? "300" : "900"} text-base`}>{product.comments === undefined ? "0": Object.keys(product.comments).length } Reviews</h4>
                         </div>
 
                         <div className="flex flex-wrap gap-4 mt-8">
@@ -81,7 +81,7 @@ export default function ProductDetails()
                         </div>
 
                         <div className="flex flex-wrap gap-4 mt-8">
-                            <h4 className={`text-gray-${mode=== false ? "300" : "900"} text-base`}>{product.details?.content}</h4>
+                            <h4 className={`text-gray-${mode=== false ? "300" : "900"} text-base`}>{product.details}</h4>
                         </div>
 
                         <div className="flex flex-wrap gap-4 mt-8">

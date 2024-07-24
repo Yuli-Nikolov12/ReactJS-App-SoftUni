@@ -10,11 +10,14 @@ export const allProducts = async () => {
     return products;
 }
 
+export const createProduct = ( name, price, imageSrc, details) => request.post(`${BASE_URL}`, { name, price, imageSrc, details });
+
 export const oneProduct = (productId) => request.get(`${BASE_URL}/${productId}`);
 
 const productsAPI = {
     allProducts,
-    oneProduct
+    oneProduct,
+    createProduct
 };
 
 export default productsAPI;
