@@ -57,7 +57,12 @@ export default function ProductDetails()
                 />
             </div>
             <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-                <h2 className={`pb-10 text-4xl font-bold tracking-tight text-gray-${mode=== false? "300" : "900"}`}>Product Details</h2>
+                <h2 className={`flex pb-10 text-4xl font-bold tracking-tight text-gray-${mode=== false? "300" : "900"}`}>Product Details
+                    <span className='pl-2' />
+                    <button onClick={() => alert("To be implemented!")} className='min-w-[60px] px-1 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold rounded'>Edit</button>
+                    <span className='pl-2' />
+                    <button onClick={() => alert("To be implemented!")} className='min-w-[60px] px-1 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold rounded'>Delete</button>
+                </h2>
                 
                 <div className="relative isolate grid items-start grid-cols-1 lg:grid-cols-5 gap-12 shadow-[0_5px_20px_3px_rgba(611,181,237,10)] p-6 rounded-lg">
                     <div className="lg:col-span-3 w-full lg:sticky top-0 text-center">
