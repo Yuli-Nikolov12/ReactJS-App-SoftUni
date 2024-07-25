@@ -86,7 +86,7 @@ export default function Register() {
                         <div className="mt-2">
                         <input
                             id="confirm-password"
-                            name="password"
+                            name="confPassword"
                             type="password"
                             onChange={changeHandler}
                             value={values.confPassword}
