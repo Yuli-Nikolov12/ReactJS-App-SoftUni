@@ -1,6 +1,6 @@
 import * as request from './requester';
 
-const BASE_URL = 'http://localhost:3030/jsonstore/products/products';
+const BASE_URL = 'http://localhost:3030/data/products';
 
 export const allProducts = async () => {
     const result = await request.get(BASE_URL);

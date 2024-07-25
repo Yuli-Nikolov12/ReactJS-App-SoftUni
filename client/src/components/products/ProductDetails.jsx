@@ -1,27 +1,20 @@
 import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-import productsAPI from '../../api/products-api';
 import commentsApi from '../../api/comments-api';
 import { ThemeModeContext } from '../../contexts/ThemeContext';
 import Modal from '../modal/Modal';
+import { useGetOneProduct } from '../../hooks/useProducts';
 
 export default function ProductDetails()
 {
+    const { productId } = useParams();
     const [mode, setMode] = useContext(ThemeModeContext);
-    const [product, setProduct] = useState({});
     const [showModal, setShowModal] = useState(false);
     const [comment, setComment] = useState('');
-    const { productId } = useParams();
+    
+    const [product, setProduct] = useGetOneProduct(productId);
     let numberTax = 0;
-
-    useEffect(() => {
-        (async () => {
-            const result = await productsAPI.oneProduct(productId);
-
-            setProduct(result);
-        })()
-    },[]);
 
     const submitHandle = async (e) => {
         e.preventDefault();
@@ -103,7 +96,7 @@ export default function ProductDetails()
                     </h4>
                     
                     {product.comments && Object.values(product.comments).map(comment => (
-                        <div className='pt-6'>
+                        <div className='pt-6' key={comment._id}>
                             <div className="flex items-start">
                                 <img src="https://readymadeui.com/team-2.webp" className="w-12 h-12 rounded-full border-2 border-white" />
                                 <div className="ml-3">

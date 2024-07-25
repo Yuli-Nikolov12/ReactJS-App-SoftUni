@@ -1,27 +1,14 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext } from 'react';
 import { Link } from "react-router-dom";
 
 import { ThemeModeContext } from '../../contexts/ThemeContext';
 import Spinner from "../Spinner";
 import ProductItem from "./ProductItem";
-import productsAPI from "../../api/products-api";
+import { useAllProducts } from '../../hooks/useProducts';
 
-
-  
   export default function ProductList() {
     const [mode, setMode] = useContext(ThemeModeContext);
-    const [products, setProducts] = useState([]);
-    const [isFetching, setIsFetching] = useState(true);
-
-    useEffect(() => {
-      (async () => {
-        const result = await productsAPI.allProducts();
-
-        setProducts(result);
-        setIsFetching(false);
-      }
-      )();
-    },[]);
+    const [products, setProducts, isFetching] = useAllProducts();
 
     return (
       <div className="relative isolate pt-10 min-h-screen">
