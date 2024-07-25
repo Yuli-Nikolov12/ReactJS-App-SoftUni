@@ -1,24 +1,15 @@
 import { Link } from "react-router-dom";
 import { useContext } from 'react';
 import { ThemeModeContext } from '../../contexts/ThemeContext';
+import { AuthContext } from '../../contexts/AuthContext';
 import { useForm } from "../../hooks/useForm";
-import { useLogin } from '../../hooks/useAuth';
 
 export default function Login() {
     const [mode, setMode] = useContext(ThemeModeContext);
+    const { onLogin } = useContext(AuthContext);
     
-    const login = useLogin();
     const { values, changeHandler, submitHandler} = useForm(
-        {email: '', password: ''},
-        async ({email, password}) => {
-            try {
-                await login(email,password)
-            }
-            catch(err) {
-                console.log(err.massage)
-            }
-        }
-    );
+        {email: '', password: ''}, onLogin);
  
     return (
       <>
