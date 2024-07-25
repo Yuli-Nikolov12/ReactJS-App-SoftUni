@@ -1,13 +1,13 @@
 import * as request from "./requester"
 
-const BASE_URL ='http://localhost:3030/data/products';
+const BASE_URL ='http://localhost:3030/data/comments';
 
-const createComment = (productId, emailAddress, text) => request.post(`${BASE_URL}/${productId}/comments`, { emailAddress, text });
+export const createComment = (productId, emailAddress, text) => request.post(`${BASE_URL}`, { emailAddress, text, productId });
 
-const allComments = async (productId) => {
-    const result = await request.get(`${BASE_URL}/${productId}`);
+export const allComments = async (productId) => {
+    const result = await request.get(`${BASE_URL}?where=productId%3D%22${productId}%22`);
     
-    const comments = Object.values(result.comments);
+    const comments = Object.values(result);
 
     return comments;
 }

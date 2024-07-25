@@ -2,6 +2,7 @@ import { createContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { useLogin, useRegister } from '../hooks/useAuth';
+import { useLocalStorage } from "../hooks/useLocalStorage";
 
 export const AuthContext = createContext();
 
@@ -9,7 +10,7 @@ export const AuthProvider = ({
     children,
 }) => {
     const navigate = useNavigate();
-    const [user, setUser] = useState({});
+    const [user, setUser] = useLocalStorage("user",{});
     const login = useLogin();
     const register = useRegister();
     

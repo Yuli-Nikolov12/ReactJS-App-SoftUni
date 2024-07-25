@@ -5,32 +5,35 @@ import commentsApi from '../../api/comments-api';
 import { ThemeModeContext } from '../../contexts/ThemeContext';
 import Modal from '../modal/Modal';
 import { useGetOneProduct } from '../../hooks/useProducts';
+import { AuthContext } from '../../contexts/AuthContext';
+import { useAllComments } from '../../hooks/useComments';
 
 export default function ProductDetails()
 {
     const { productId } = useParams();
+
     const [mode, setMode] = useContext(ThemeModeContext);
-    const [showModal, setShowModal] = useState(false);
-    const [comment, setComment] = useState('');
+    const {email} = useContext(AuthContext);
     
+    const [showModal, setShowModal] = useState(false);
+    const [commentText, setCommentText] = useState('');
+    const [comments, setComments, isFetching] = useAllComments(productId);
     const [product, setProduct] = useGetOneProduct(productId);
+    
     let numberTax = 0;
 
     const submitHandle = async (e) => {
         e.preventDefault();
 
-        const newComment = await commentsApi.createComment(productId, "test@test.com", comment);
+        const newComment = await commentsApi.createComment(productId, email, commentText);
 
-        setProduct(prevProduct => ({
+        setComments(prevProduct => ({
             ...prevProduct,
-            comments: {
-                ...prevProduct.comments,
-                [newComment._id]: newComment,
-            }
+            [newComment._id]: newComment,
         }))
 
         setShowModal(false);
-        setComment('');
+        setCommentText('');
     }
 
     numberTax = product.price?.slice(1,5);
@@ -70,7 +73,7 @@ export default function ProductDetails()
                         <h2 className={`text-2xl font-extrabold text-gray-${mode=== false ? "300" : "900"}`}>{product.name}</h2>
 
                         <div className="flex space-x-2 mt-4">
-                            <h4 className={`text-gray-${mode=== false ? "300" : "900"} text-base`}>{product.comments === undefined ? "0": Object.keys(product.comments).length } Reviews</h4>
+                            <h4 className={`text-gray-${mode=== false ? "300" : "900"} text-base`}>{comments === undefined ? "0": Object.keys(comments).length } Reviews</h4>
                         </div>
 
                         <div className="flex flex-wrap gap-4 mt-8">
@@ -95,7 +98,7 @@ export default function ProductDetails()
                         <button onClick={() => setShowModal(true)} type="button" className={`absolute relative text-sm px-2 py-1 bg-blue-600  hover:bg-blue-700 border border-blue-600 text-gray-200 rounded`}>Add comment</button>
                     </h4>
                     
-                    {product.comments && Object.values(product.comments).map(comment => (
+                    {comments && Object.values(comments).map(comment => (
                         <div className='pt-6' key={comment._id}>
                             <div className="flex items-start">
                                 <img src="https://readymadeui.com/team-2.webp" className="w-12 h-12 rounded-full border-2 border-white" />
@@ -117,8 +120,8 @@ export default function ProductDetails()
                         <label htmlFor="comment" className="sr-only">Your comment</label>
                         <textarea id="comment" rows="6"
                             name='comment'
-                            onChange={(e) => setComment(e.target.value)}
-                            value={comment}
+                            onChange={(e) => setCommentText(e.target.value)}
+                            value={commentText}
                             className="px-0 w-full text-sm text-gray-900 border-0 focus:ring-0 focus:outline-none dark:text-white dark:placeholder-gray-400 dark:bg-gray-800"
                             placeholder="Write a comment..." 
                             required></textarea>

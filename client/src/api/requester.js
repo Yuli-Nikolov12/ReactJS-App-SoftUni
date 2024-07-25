@@ -12,9 +12,25 @@ async function requester(method, url, data) {
 
         options.body = JSON.stringify(data);
     }
+    
+    const serializedAuth = localStorage.getItem('user');
+    if (serializedAuth) {
+        const auth = JSON.parse(serializedAuth);
+        
+        if (auth.accessToken) {
+            options.headers = {
+                ...options.headers,
+                'X-Authorization': auth.accessToken,
+            };
+        }
+    }
 
     const response = await fetch(url, options);
     const result = await response.json();
+
+    if(!response.ok) {
+        throw result;
+    }
 
     return result;
 }

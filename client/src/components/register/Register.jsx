@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useContext } from 'react';
+import { useState, useContext, useCallback } from 'react';
 import { ThemeModeContext } from '../../contexts/ThemeContext';
 import { AuthContext } from '../../contexts/AuthContext';
 import { useForm } from "../../hooks/useForm";
@@ -9,8 +9,42 @@ export default function Register() {
 
     const { onRegister } = useContext(AuthContext);
     
-    const { values, changeHandler, submitHandler} = useForm(
-        {email: '', password: '', confPassword: ''}, onRegister);
+    const { values, changeHandler, submitHandler} = useForm({email: '', password: '', confPassword: ''}, onRegister);
+
+    const [errors, setErrors] = useState({
+        requiredEmail: false,
+        testEmail: false,
+        requiredPassword: false,
+        requiredRepeatPassword: false,
+    });
+    
+    const onEmailBlur = useCallback(() => {
+        const rgx = /^(.+)@(.+)$/;
+
+        if (values.email === "") {
+            setErrors(state => ({...state, requiredEmail:true, testEmail: false}));
+        } else  if (!rgx.test(values.email)) {
+            setErrors(state => ({...state, requiredEmail:false, testEmail: true}));
+        } else {
+            setErrors(state => ({...state, requiredEmail: false, testEmail: false}));
+        };
+    }, [values]);
+    
+    const onPasswordBlur = useCallback(() => {
+        if (values.password === "") {
+            setErrors(state => ({...state, requiredPassword: true}));
+        } else {
+            setErrors(state => ({...state, requiredPassword: false}));
+        }
+    }, [values]);
+    
+    const onConfPasswordBlur = useCallback(() => {
+        if (values.confPassword === "") {
+            setErrors(state => ({...state, requiredRepeatPassword: true}));
+        } else {
+            setErrors(state => ({...state, requiredRepeatPassword: false}));
+        }
+    }, [values]);
 
     return (
       <>
@@ -51,10 +85,12 @@ export default function Register() {
                             type="email"
                             onChange={changeHandler}
                             value={values.email}
-                            required
+                            onBlur={onEmailBlur} 
                             autoComplete="email"
                             className="pl-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                         />
+                        {errors.requiredEmail && <span style={{color: "red"}}>This field is required</span>}
+                        {errors.testEmail && <span style={{color: "red"}}>Enter valid email</span>}
                         </div>
                     </div>
         
@@ -71,10 +107,11 @@ export default function Register() {
                             type="password"
                             onChange={changeHandler}
                             value={values.password}
-                            required
+                            onBlur={onPasswordBlur} 
                             autoComplete="current-password"
                             className="pl-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                         />
+                        {errors.requiredPassword && <span style={{color: "red"}}>This field is required</span>}
                         </div>
                     </div>
                     <div>
@@ -90,10 +127,11 @@ export default function Register() {
                             type="password"
                             onChange={changeHandler}
                             value={values.confPassword}
-                            required
+                            onBlur={onConfPasswordBlur} 
                             autoComplete="current-password"
                             className="pl-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                         />
+                        {errors.requiredRepeatPassword && <span style={{color: "red"}}>This field is required</span>}
                         </div>
                     </div>
                     <div>
