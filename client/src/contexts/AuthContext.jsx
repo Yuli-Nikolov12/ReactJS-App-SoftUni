@@ -57,6 +57,7 @@ export const AuthProvider = ({
         onRegister,
         onLogout,
         email: user.email,
+        productOwner: user._id,
         userName: user.username,
         token: user.accessToken,
         isAuthenticated: !!user.accessToken,

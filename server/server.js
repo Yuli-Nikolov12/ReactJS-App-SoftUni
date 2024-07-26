@@ -1351,35 +1351,43 @@
                 "_id": "bfc3ddac-8446-47d8-b7f6-c7684c3df791"
             },
             "b61c48a7-a962-4926-9598-92016af148c1": {
+                "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
                 "name": "Nomad Tumbler",
                 "price": "$35",
                 "imageSrc": "https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-02.jpg",
                 "imageAlt": "Olive drab green insulated bottle with flared screw lid and flat top.",
                 "details": "The Nomad Tumbler is a premium, travel-friendly beverage container designed for those on the go. It combines rugged durability with modern aesthetics, perfect for both urban and outdoor adventures.",
+                "_createdOn": 1721923754922,
                 "_id": "b61c48a7-a962-4926-9598-92016af148c1"
             },
             "d8a609b4-e313-4dd2-a2b0-5de775e880bc": {
+                "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
                 "name": "Focus Paper Refill",
                 "price": "$89",
                 "imageSrc": "https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-03.jpg",
                 "imageAlt": "Person using a pen to cross a task off a productivity paper card.",
                 "details": "The Focus Paper Refill is designed for the Focus Planner, providing high-quality, premium paper for those who value organization and productivity.",
+                "_createdOn": 1721923754922,
                 "_id": "d8a609b4-e313-4dd2-a2b0-5de775e880bc"
             },
             "381a98cb-d616-4b6c-af9e-3b313a626b8f": {
+                "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
                 "name": "Machined Mechanical Pencil",
                 "price": "$35",
                 "imageSrc": "https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-04.jpg",
                 "imageAlt": "Hand holding black machined steel mechanical pencil with brass tip and top.",
                 "details": "The Machined Mechanical Pencil is a precision writing instrument, crafted for professionals and enthusiasts who appreciate fine engineering and durability.",
+                "_createdOn": 1721923754922,
                 "_id": "381a98cb-d616-4b6c-af9e-3b313a626b8f"
             },
             "c5d23e33-6302-4ff9-927b-85ed0a3e5fa5": {
+                "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
                 "name": "Iphone 14 Pro",
                 "price": "$1499",
                 "imageSrc": "https://s13emagst.akamaized.net/products/48592/48591223/images/res_0a49cd835e308621c4ce9f501418d2a5.jpg",
                 "imageAlt": "Iphone 14",
                 "details": "The iPhone 14 Pro is a high-performance smartphone from Apple, offering a robust set of features aimed at providing an exceptional user experience, particularly for photography enthusiasts and power users.",
+                "_createdOn": 1721923754922,
                 "_id": "c5d23e33-6302-4ff9-927b-85ed0a3e5fa5"
             }
         },

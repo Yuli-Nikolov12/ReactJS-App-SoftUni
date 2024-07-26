@@ -14,7 +14,7 @@ export default function ProductDetails()
 
     const [mode, setMode] = useContext(ThemeModeContext);
     const navigate = useNavigate();
-    const {isAuthenticated, email} = useContext(AuthContext);
+    const {isAuthenticated, email, productOwner} = useContext(AuthContext);
     
     const [showModal, setShowModal] = useState(false);
     const [commentText, setCommentText] = useState('');
@@ -55,7 +55,7 @@ export default function ProductDetails()
             </div>
             <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
                 <h2 className={`flex pb-10 text-4xl font-bold tracking-tight text-gray-${mode=== false? "300" : "900"}`}>Product Details
-                    {isAuthenticated && 
+                    {isAuthenticated && productOwner === product._ownerId &&
                         <div>
                             <span className='pl-2' />
                             <button onClick={() => navigate(`/all-products/${productId}/edit`)} className='min-w-[60px] px-1 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold rounded'>Edit</button>
