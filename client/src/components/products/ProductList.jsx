@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import { Link } from "react-router-dom";
 
 import { ThemeModeContext } from '../../contexts/ThemeContext';
+import { AuthContext } from '../../contexts/AuthContext';
 import Spinner from "../Spinner";
 import ProductItem from "./ProductItem";
 import { useAllProducts } from '../../hooks/useProducts';
@@ -9,6 +10,7 @@ import { useAllProducts } from '../../hooks/useProducts';
   export default function ProductList() {
     const [mode, setMode] = useContext(ThemeModeContext);
     const [products, setProducts, isFetching] = useAllProducts();
+    const {isAuthenticated} = useContext(AuthContext);
 
     return (
       <div className="relative isolate pt-10 min-h-screen">
@@ -27,12 +29,14 @@ import { useAllProducts } from '../../hooks/useProducts';
         
         <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
         <h2 className={`pb-10 text-4xl font-bold tracking-tight text-gray-${mode=== false? "300" : "900"}`}>All Products<span className='pl-5'></span>
-               <Link
+               {isAuthenticated && 
+                <Link
                 to="/product-create"
                 className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-              >
-                Create Product
-              </Link>
+                >
+                  Create Product
+                </Link>
+               }
         </h2>
             {isFetching ? 
               <Spinner />

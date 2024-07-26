@@ -1,24 +1,26 @@
 import { useContext, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+
 import { ThemeModeContext } from '../../contexts/ThemeContext';
 import { AuthContext } from '../../contexts/AuthContext';
-import { useNavigate } from 'react-router-dom';
+import { useGetOneProduct } from '../../hooks/useProducts';
 import productsAPI from '../../api/products-api';
 
-export default function ProductCreate() {
+export default function ProductEdit() {
+
+    const { productId } = useParams();
     const [mode, setMode] = useContext(ThemeModeContext);
-    const {isAuthenticated} = useContext(AuthContext);
-    const [name, setName] = useState('');
-    const [price, setPrice] = useState('');
-    const [imageSrc, setImageSrc] = useState('');
-    const [detailsInfo, setDetailsInfo] = useState('');
+    const {isAuthenticated, email} = useContext(AuthContext);
+    const [currentProduct, setCurrentProduct] = useGetOneProduct(productId);
+
     const navigate = useNavigate();
 
     const submitHandle = async (e) => {
         e.preventDefault();
 
-        await productsAPI.createProduct(name, `$${price}`, imageSrc, detailsInfo);
+        await productsAPI.editProduct(productId, currentProduct.name, currentProduct.price, currentProduct.imageSrc, currentProduct.details);
 
-        navigate("/all-products");
+        navigate(`/all-products/${productId}/details`);
     }
 
     return(
@@ -36,7 +38,7 @@ export default function ProductCreate() {
                 />
             </div>
             <div className="mx-auto max-w-2xl text-center px-4 py-16 sm:px-6 sm:pt-24 pb-2 lg:max-w-7xl lg:px-8">
-                <h2 className={`pb-10 text-4xl font-bold tracking-tight text-gray-${mode=== false? "300" : "900"}`}>Create Product</h2>
+                <h2 className={`pb-10 text-4xl font-bold tracking-tight text-gray-${mode=== false? "300" : "900"}`}>Edit Product</h2>
             </div>
             {isAuthenticated ? 
             <div className="sm:mx-auto sm:w-full sm:max-w-sm">
@@ -48,10 +50,10 @@ export default function ProductCreate() {
                         <div className="mt-2">
                         <input
                             id="productName"
-                            name="productName"
+                            name="name"
                             type="text"
-                            onChange={(e) => setName(e.target.value)}
-                            value={name}
+                            onChange={(e) => setCurrentProduct(prev => ({...prev,[e.target.name]:e.target.value}))}
+                            value={currentProduct.name ? currentProduct.name : ''}
                             required
                             autoComplete="productName"
                             className="pl-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -71,8 +73,8 @@ export default function ProductCreate() {
                             id="price"
                             name="price"
                             type="text"
-                            onChange={(e) => setPrice(e.target.value)}
-                            value={price}
+                            onChange={(e) => setCurrentProduct(prev => ({...prev,[e.target.name]:e.target.value}))}
+                            value={currentProduct.price ? currentProduct.price : ''}
                             required
                             className="pl-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                         />
@@ -91,8 +93,8 @@ export default function ProductCreate() {
                             id="imageSrc"
                             name="imageSrc"
                             type="text"
-                            onChange={(e) => setImageSrc(e.target.value)}
-                            value={imageSrc}
+                            onChange={(e) => setCurrentProduct(prev => ({...prev,[e.target.name]:e.target.value}))}
+                            value={currentProduct.imageSrc ? currentProduct.imageSrc : ''}
                             required
                             className="pl-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                         />
@@ -108,9 +110,9 @@ export default function ProductCreate() {
                         </div>
                         <div className="mt-2">
                         <textarea id="detailsInfo" rows="4"
-                            name='detailsInfo'
-                            onChange={(e) => setDetailsInfo(e.target.value)}
-                            value={detailsInfo}
+                            name='details'
+                            onChange={(e) => setCurrentProduct(prev => ({...prev,[e.target.name]:e.target.value}))}
+                            value={currentProduct.details ? currentProduct.details : ''}
                             className="pl-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                             placeholder="Write a details..." 
                             required></textarea>
@@ -119,10 +121,10 @@ export default function ProductCreate() {
 
                     <input type="submit"
                         className="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-primary-200  hover:bg-blue-800"
-                        value="Create Product"/>
+                        value="Edit Product"/>
                     <span className='pl-2'/>
                     <button type="button"
-                        onClick={() => navigate('/all-products')}
+                        onClick={() => navigate(`/all-products/${productId}/details`)}
                         className="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-primary-200  hover:bg-blue-800">
                         Close
                     </button>
@@ -130,7 +132,7 @@ export default function ProductCreate() {
             </div>
             : 
                 <div>
-                    <h2 className={`pb-10 text-4xl text-center font-bold tracking-tight italic text-gray-${mode=== false? "300" : "900"}`}>You need to Login to be able to create product!</h2>
+                    <h2 className={`pb-10 text-4xl text-center font-bold tracking-tight italic text-gray-${mode=== false? "300" : "900"}`}>You need to Login to be able to edit this product!</h2>
                 </div>
             }
             

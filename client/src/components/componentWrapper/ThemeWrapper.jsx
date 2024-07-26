@@ -7,6 +7,7 @@ import AboutUs from '../aboutPage/AboutUs';
 import ProductList from '../products/ProductList';
 import ProductDetails from '../products/ProductDetails';
 import ProductCreate from "../product-create/ProductCreate";
+import ProductEdit from "../product-edit/ProductEdit";
 import { ThemeModeContext } from '../../contexts/ThemeContext';
 
 import { Routes, Route } from 'react-router-dom';
@@ -27,6 +28,7 @@ export default function ThemeWrapper()
                 <Route path="/about-us" element={<AboutUs />} />
                 <Route path="/all-products" element={<ProductList />} />
                 <Route path="/all-products/:productId/details" element={<ProductDetails />} />
+                <Route path="/all-products/:productId/edit" element={<ProductEdit />} />
                 <Route path="/product-create" element={<ProductCreate />} />
             </Routes>
         </div>

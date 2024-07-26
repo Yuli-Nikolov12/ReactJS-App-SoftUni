@@ -8,7 +8,6 @@ import { AuthContext } from '../../contexts/AuthContext';
 const navigation = [
     { name: 'Home', to: '/' },
     { name: 'All Product', to: '/all-products' },
-    { name: 'Your Products', to: '#' },
     { name: 'About Us', to: '/about-us' },
   ]
 
@@ -67,7 +66,7 @@ export default function Header() {
                 <Link onClick={onLogout} to="/" className={`text-sm font-semibold leading-6 text-gray-${mode === false? "300" : "900"}`}>
                 Logout <span aria-hidden="true">&rarr;</span>
                 </Link>
-              </div>              
+              </div>     
             :
               <Link to="/login" className={`text-sm font-semibold leading-6 text-gray-${mode === false? "300" : "900"}`}>
               Log in <span aria-hidden="true">&rarr;</span>

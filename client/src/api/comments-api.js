@@ -12,4 +12,4 @@ export const allComments = async (productId) => {
     return comments;
 }
 
-export default {createComment, allComments };
+export default { createComment, allComments };

@@ -14,10 +14,13 @@ export const createProduct = ( name, price, imageSrc, details) => request.post(`
 
 export const oneProduct = (productId) => request.get(`${BASE_URL}/${productId}`);
 
+export const editProduct = (productId, name, price, imageSrc, details) => request.put(`${BASE_URL}/${productId}`, { name, price, imageSrc, details });
+
 const productsAPI = {
     allProducts,
     oneProduct,
-    createProduct
+    createProduct,
+    editProduct
 };
 
 export default productsAPI;
