@@ -3,6 +3,7 @@ import { Bars3Icon, XMarkIcon, MoonIcon, SunIcon } from '@heroicons/react/24/out
 import { useState, useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { ThemeModeContext } from '../../contexts/ThemeContext';
+import { AuthContext } from '../../contexts/AuthContext';
 
 const navigation = [
     { name: 'Home', to: '/' },
@@ -15,6 +16,7 @@ const navigation = [
 export default function Header() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [mode, setMode] = useContext(ThemeModeContext);
+    const {isAuthenticated, userName, onLogout} = useContext(AuthContext);
 
   return (
     <header className="absolute inset-x-0 top-0 z-50">
@@ -59,9 +61,18 @@ export default function Header() {
                     <MoonIcon aria-hidden="true" className="h-6 w-6" />
                 }
                 </button>
-            <Link to="/login" className={`text-sm font-semibold leading-6 text-gray-${mode === false? "300" : "900"}`}>
+            {isAuthenticated ? 
+              <div>
+                <span className={`pr-2 text-gray-${mode === false? "300" : "900"}`}>Hello, {userName}</span>
+                <Link onClick={onLogout} to="/" className={`text-sm font-semibold leading-6 text-gray-${mode === false? "300" : "900"}`}>
+                Logout <span aria-hidden="true">&rarr;</span>
+                </Link>
+              </div>              
+            :
+              <Link to="/login" className={`text-sm font-semibold leading-6 text-gray-${mode === false? "300" : "900"}`}>
               Log in <span aria-hidden="true">&rarr;</span>
-            </Link>
+              </Link>
+            }
           </div>
         </nav>
         <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">

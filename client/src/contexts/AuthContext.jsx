@@ -1,7 +1,7 @@
 import { createContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { useLogin, useRegister } from '../hooks/useAuth';
+import { useLogin, useRegister, useLogout } from '../hooks/useAuth';
 import { useLocalStorage } from "../hooks/useLocalStorage";
 
 export const AuthContext = createContext();
@@ -13,6 +13,7 @@ export const AuthProvider = ({
     const [user, setUser] = useLocalStorage("user",{});
     const login = useLogin();
     const register = useRegister();
+    const logout = useLogout();
     
     const onLogin = async ({email, password}) => {
         let newUser = {};
@@ -26,14 +27,14 @@ export const AuthProvider = ({
         navigate('/');
     };
 
-    const onRegister = async ({email, password, confPassword}) => {
+    const onRegister = async ({email, password, confPassword, username}) => {
         let newUser = {};
         try {
             if (confPassword !== password) {
                 throw new Error ("Passwords don't match!")
             };
 
-            newUser = await register(email, password);
+            newUser = await register(email, password, username);
             
         } catch (error) {
             return alert(error.message);
@@ -42,10 +43,21 @@ export const AuthProvider = ({
         navigate('/');
     };
 
+    const onLogout = async () => {
+        try {
+            await logout();
+        } catch (error) {
+        }
+        setUser({});
+        localStorage.clear();
+    };
+
     const authContextValues = {
         onLogin,
         onRegister,
+        onLogout,
         email: user.email,
+        userName: user.username,
         token: user.accessToken,
         isAuthenticated: !!user.accessToken,
     }

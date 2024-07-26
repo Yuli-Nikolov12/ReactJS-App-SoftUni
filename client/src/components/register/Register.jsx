@@ -9,13 +9,14 @@ export default function Register() {
 
     const { onRegister } = useContext(AuthContext);
     
-    const { values, changeHandler, submitHandler} = useForm({email: '', password: '', confPassword: ''}, onRegister);
+    const { values, changeHandler, submitHandler} = useForm({email: '', password: '', confPassword: '', username: ''}, onRegister);
 
     const [errors, setErrors] = useState({
         requiredEmail: false,
         testEmail: false,
         requiredPassword: false,
         requiredRepeatPassword: false,
+        username: false,
     });
     
     const onEmailBlur = useCallback(() => {
@@ -43,6 +44,14 @@ export default function Register() {
             setErrors(state => ({...state, requiredRepeatPassword: true}));
         } else {
             setErrors(state => ({...state, requiredRepeatPassword: false}));
+        }
+    }, [values]);
+
+    const onUsernameBlur = useCallback(() => {
+        if (values.username === "") {
+            setErrors(state => ({...state, username: true}));
+        } else {
+            setErrors(state => ({...state, username: false}));
         }
     }, [values]);
 
@@ -93,7 +102,26 @@ export default function Register() {
                         {errors.testEmail && <span style={{color: "red"}}>Enter valid email</span>}
                         </div>
                     </div>
-        
+                    <div>
+                        <div className="flex items-center justify-between">
+                        <label htmlFor="password" className={`block text-sm font-medium leading-6 text-gray-${mode=== false? "300" : "900"}`}>
+                            User Name
+                        </label>
+                        </div>
+                        <div className="mt-2">
+                        <input
+                            id="username"
+                            name="username"
+                            type="text"
+                            onChange={changeHandler}
+                            value={values.username}
+                            onBlur={onUsernameBlur} 
+                            autoComplete="username"
+                            className="pl-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        />
+                        {errors.requiredRepeatPassword && <span style={{color: "red"}}>This field is required</span>}
+                        </div>
+                    </div>
                     <div>
                         <div className="flex items-center justify-between">
                         <label htmlFor="password" className={`block text-sm font-medium leading-6 text-gray-${mode=== false? "300" : "900"}`}>
