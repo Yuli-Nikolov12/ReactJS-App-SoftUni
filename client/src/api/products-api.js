@@ -16,11 +16,14 @@ export const oneProduct = (productId) => request.get(`${BASE_URL}/${productId}`)
 
 export const editProduct = (productId, name, price, imageSrc, details) => request.put(`${BASE_URL}/${productId}`, { name, price, imageSrc, details });
 
+export const deleteProduct = (productId) => request.del(`${BASE_URL}/${productId}`);
+
 const productsAPI = {
     allProducts,
     oneProduct,
     createProduct,
-    editProduct
+    editProduct,
+    deleteProduct
 };
 
 export default productsAPI;

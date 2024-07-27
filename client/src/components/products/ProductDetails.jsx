@@ -7,6 +7,7 @@ import Modal from '../modal/Modal';
 import { useGetOneProduct } from '../../hooks/useProducts';
 import { AuthContext } from '../../contexts/AuthContext';
 import { useAllComments } from '../../hooks/useComments';
+import productsAPI from '../../api/products-api';
 
 export default function ProductDetails()
 {
@@ -37,6 +38,14 @@ export default function ProductDetails()
         setCommentText('');
     }
 
+    const deleteHandle = async () => {
+        const result = confirm("Are you sure you want to delete?");
+        if(result) {
+            await productsAPI.deleteProduct(productId);
+            navigate('/all-products');
+        }
+    }
+
     numberTax = product.price?.slice(1,5);
     numberTax = Number(numberTax) + Number(100);
     return(
@@ -60,7 +69,7 @@ export default function ProductDetails()
                             <span className='pl-2' />
                             <button onClick={() => navigate(`/all-products/${productId}/edit`)} className='min-w-[60px] px-1 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold rounded'>Edit</button>
                             <span className='pl-2' />
-                            <button onClick={() => alert("To be implemented!")} className='min-w-[60px] px-1 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold rounded'>Delete</button>
+                            <button onClick={deleteHandle} className='min-w-[60px] px-1 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold rounded'>Delete</button>
                         </div>
                     }
                 </h2>
