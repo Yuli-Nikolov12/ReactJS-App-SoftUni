@@ -10,7 +10,7 @@ export default function ProductEdit() {
 
     const { productId } = useParams();
     const [mode, setMode] = useContext(ThemeModeContext);
-    const {isAuthenticated, email} = useContext(AuthContext);
+    const {isAuthenticated, email, productOwner} = useContext(AuthContext);
     const [currentProduct, setCurrentProduct] = useGetOneProduct(productId);
 
     const navigate = useNavigate();
@@ -40,7 +40,7 @@ export default function ProductEdit() {
             <div className="mx-auto max-w-2xl text-center px-4 py-16 sm:px-6 sm:pt-24 pb-2 lg:max-w-7xl lg:px-8">
                 <h2 className={`pb-10 text-4xl font-bold tracking-tight text-gray-${mode=== false? "300" : "900"}`}>Edit Product</h2>
             </div>
-            {isAuthenticated ? 
+            {isAuthenticated && productOwner === currentProduct._ownerId ? 
             <div className="sm:mx-auto sm:w-full sm:max-w-sm">
                 <form onSubmit={submitHandle} className="space-y-6">
                     <div>
@@ -132,7 +132,11 @@ export default function ProductEdit() {
             </div>
             : 
                 <div>
-                    <h2 className={`pb-10 text-4xl text-center font-bold tracking-tight italic text-gray-${mode=== false? "300" : "900"}`}>You need to Login to be able to edit this product!</h2>
+                    {isAuthenticated && productOwner !== currentProduct._ownerId ?
+                        <h2 className={`pb-10 text-4xl text-center font-bold tracking-tight italic text-gray-${mode=== false? "300" : "900"}`}>You need to be the owner of this product to be able to edit!</h2> 
+                    :
+                        <h2 className={`pb-10 text-4xl text-center font-bold tracking-tight italic text-gray-${mode=== false? "300" : "900"}`}>You need to Login to be able to edit this product!</h2> 
+                    }
                 </div>
             }
             

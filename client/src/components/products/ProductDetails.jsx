@@ -2,12 +2,12 @@ import { useContext, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import commentsApi from '../../api/comments-api';
-import { ThemeModeContext } from '../../contexts/ThemeContext';
-import Modal from '../modal/Modal';
-import { useGetOneProduct } from '../../hooks/useProducts';
-import { AuthContext } from '../../contexts/AuthContext';
-import { useAllComments } from '../../hooks/useComments';
 import productsAPI from '../../api/products-api';
+import { ThemeModeContext } from '../../contexts/ThemeContext';
+import { AuthContext } from '../../contexts/AuthContext';
+import { useGetOneProduct } from '../../hooks/useProducts';
+import { useAllComments } from '../../hooks/useComments';
+import Modal from '../modal/Modal';
 
 export default function ProductDetails()
 {
