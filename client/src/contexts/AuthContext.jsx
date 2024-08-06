@@ -14,6 +14,8 @@ export const AuthProvider = ({
     const login = useLogin();
     const register = useRegister();
     const logout = useLogout();
+
+    const isAdmin = Boolean(user.role === "admin");
     
     const onLogin = async ({email, password}) => {
         let newUser = {};
@@ -21,7 +23,7 @@ export const AuthProvider = ({
             newUser = await login(email,password)
         }
         catch(err) {
-            return alert(err.massage)
+            return alert(err.message)
         }
         setUser(newUser);
         navigate('/');
@@ -58,6 +60,7 @@ export const AuthProvider = ({
         onLogout,
         email: user.email,
         productOwner: user._id,
+        isAdmin,
         userName: user.username,
         token: user.accessToken,
         isAuthenticated: !!user.accessToken,
