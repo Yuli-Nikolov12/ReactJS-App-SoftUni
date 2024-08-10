@@ -34,7 +34,7 @@ export default function Header() {
             <button
               type="button"
               onClick={() => setMobileMenuOpen(true)}
-              className={`-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-${mode === false? "300" : "900"}`}
+              className={`-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-${mode === false? "200" : "900"}`}
             >
               <span className="sr-only">Open main menu</span>
               <Bars3Icon aria-hidden="true" className="h-6 w-6" />
@@ -42,7 +42,7 @@ export default function Header() {
           </div>
           <div className="hidden lg:flex lg:gap-x-12">
             {navigation.map((item) => (
-              <Link key={item.name} to={item.to} className={`text-sm font-semibold leading-6 text-gray-${mode === false? "300" : "900"}`}>
+              <Link key={item.name} to={item.to} className={`text-sm font-semibold leading-6 text-gray-${mode === false? "200" : "900"}`}>
                 {item.name}
               </Link>
             ))}
@@ -51,7 +51,7 @@ export default function Header() {
                 <button
                 type="button"
                 onClick={() => setMode(prevMode => !prevMode)}
-                className={`pr-10 -m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-${mode === false? "300" : "900"}`}
+                className={`pr-10 -m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-${mode === false? "200" : "900"}`}
                 >
                   <span className="sr-only">Dark menu</span>
                   {mode === false ? 
@@ -62,13 +62,13 @@ export default function Header() {
                 </button>
             {isAuthenticated ? 
               <div>
-                <span className={`pr-2 text-gray-${mode === false? "300" : "900"}`}>Hello, {userName}</span>
-                <Link onClick={onLogout} to="/" className={`text-sm font-semibold leading-6 text-gray-${mode === false? "300" : "900"}`}>
+                <span className={`pr-2 text-gray-${mode === false? "200" : "900"}`}>Hello, {userName}</span>
+                <Link onClick={onLogout} to="/" className={`text-sm font-semibold leading-6 text-gray-${mode === false? "200" : "900"}`}>
                 Logout <span aria-hidden="true">&rarr;</span>
                 </Link>
               </div>     
             :
-              <Link to="/login" className={`text-sm font-semibold leading-6 text-gray-${mode === false? "300" : "900"}`}>
+              <Link to="/login" className={`text-sm font-semibold leading-6 text-gray-${mode === false? "200" : "900"}`}>
               Log in <span aria-hidden="true">&rarr;</span>
               </Link>
             }
@@ -89,7 +89,7 @@ export default function Header() {
               <button
                 type="button"
                 onClick={() => setMobileMenuOpen(false)}
-                className={`-m-2.5 rounded-md p-2.5 text-gray-${mode === false? "300" : "900"}`}
+                className={`-m-2.5 rounded-md p-2.5 text-gray-${mode === false? "200" : "900"}`}
               >
                 <span className="sr-only">Close menu</span>
                 <XMarkIcon aria-hidden="true" className="h-6 w-6" />
@@ -102,7 +102,7 @@ export default function Header() {
                     <a
                       key={item.name}
                       href={item.href}
-                      className={`-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-${mode === false? "300" : "900"} hover:bg-gray-600`}
+                      className={`-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-${mode === false? "200" : "900"} hover:bg-gray-600`}
                     >
                       {item.name}
                     </a>
@@ -111,7 +111,7 @@ export default function Header() {
                 <div className="py-6">
                   <Link
                     to="/login"
-                    className={`-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-${mode === false? "300" : "900"} hover:bg-gray-600`}
+                    className={`-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-${mode === false? "200" : "900"} hover:bg-gray-600`}
                   >
                     Log in
                   </Link>

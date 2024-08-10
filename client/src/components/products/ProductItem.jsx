@@ -16,8 +16,8 @@ export default function ProductItem(product)
                         className="h-full w-full object-cover object-center group-hover:opacity-75"
                       />
                     </div>
-                    <h3 className={`mt-4 text-sm text-gray-${mode=== false? "300" : "900"}`}>{product.name}</h3>
-                    <p className={`mt-1 text-lg font-medium text-gray-${mode=== false? "300" : "900"}`}>{product.price}</p>
+                    <h3 className={`mt-4 text-sm text-gray-${mode=== false? "200" : "900"}`}>{product.name}</h3>
+                    <p className={`mt-1 text-lg font-medium text-gray-${mode=== false? "200" : "900"}`}>{product.price}</p>
             </Link>
         </div>
     )

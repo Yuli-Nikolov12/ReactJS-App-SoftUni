@@ -28,7 +28,7 @@ import { useAllProducts } from '../../hooks/useProducts';
         </div>
         
         <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-        <h2 className={`pb-10 text-4xl font-bold tracking-tight text-gray-${mode=== false? "300" : "900"}`}>All Products<span className='pl-5'></span>
+        <h2 className={`pb-10 text-4xl font-bold tracking-tight text-gray-${mode=== false? "200" : "900"}`}>All Products<span className='pl-5'></span>
                {isAuthenticated && 
                 <Link
                 to="/product-create"

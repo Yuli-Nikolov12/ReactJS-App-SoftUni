@@ -38,13 +38,13 @@ export default function ProductEdit() {
                 />
             </div>
             <div className="mx-auto max-w-2xl text-center px-4 py-16 sm:px-6 sm:pt-24 pb-2 lg:max-w-7xl lg:px-8">
-                <h2 className={`pb-10 text-4xl font-bold tracking-tight text-gray-${mode=== false? "300" : "900"}`}>Edit Product</h2>
+                <h2 className={`pb-10 text-4xl font-bold tracking-tight text-gray-${mode=== false? "200" : "900"}`}>Edit Product</h2>
             </div>
             {isAuthenticated && productOwner === currentProduct._ownerId ? 
             <div className="sm:mx-auto sm:w-full sm:max-w-sm">
                 <form onSubmit={submitHandle} className="space-y-6">
                     <div>
-                        <label htmlFor="productName" className={`block text-sm font-medium leading-6 text-gray-${mode=== false? "300" : "900"}`}>
+                        <label htmlFor="productName" className={`block text-sm font-medium leading-6 text-gray-${mode=== false? "200" : "900"}`}>
                         Product Name
                         </label>
                         <div className="mt-2">
@@ -62,7 +62,7 @@ export default function ProductEdit() {
                     </div>
                     <div>
                         <div className="flex items-center justify-between">
-                        <label htmlFor="price" className={`block text-sm font-medium leading-6 text-gray-${mode=== false? "300" : "900"}`}>
+                        <label htmlFor="price" className={`block text-sm font-medium leading-6 text-gray-${mode=== false? "200" : "900"}`}>
                             Price
                         </label>
                         <div className="text-sm">
@@ -82,7 +82,7 @@ export default function ProductEdit() {
                     </div>
                     <div>
                         <div className="flex items-center justify-between">
-                        <label htmlFor="imageSrc" className={`block text-sm font-medium leading-6 text-gray-${mode=== false? "300" : "900"}`}>
+                        <label htmlFor="imageSrc" className={`block text-sm font-medium leading-6 text-gray-${mode=== false? "200" : "900"}`}>
                             Image Address Src
                         </label>
                         <div className="text-sm">
@@ -102,7 +102,7 @@ export default function ProductEdit() {
                     </div>
                     <div>
                         <div className="flex items-center justify-between">
-                        <label htmlFor="detailsInfo" className={`block text-sm font-medium leading-6 text-gray-${mode=== false? "300" : "900"}`}>
+                        <label htmlFor="detailsInfo" className={`block text-sm font-medium leading-6 text-gray-${mode=== false? "200" : "900"}`}>
                             Details
                         </label>
                         <div className="text-sm">
@@ -133,9 +133,9 @@ export default function ProductEdit() {
             : 
                 <div>
                     {isAuthenticated && productOwner !== currentProduct._ownerId ?
-                        <h2 className={`pb-10 text-4xl text-center font-bold tracking-tight italic text-gray-${mode=== false? "300" : "900"}`}>You need to be the owner of this product to be able to edit!</h2> 
+                        <h2 className={`pb-10 text-4xl text-center font-bold tracking-tight italic text-gray-${mode=== false? "200" : "900"}`}>You need to be the owner of this product to be able to edit!</h2> 
                     :
-                        <h2 className={`pb-10 text-4xl text-center font-bold tracking-tight italic text-gray-${mode=== false? "300" : "900"}`}>You need to Login to be able to edit this product!</h2> 
+                        <h2 className={`pb-10 text-4xl text-center font-bold tracking-tight italic text-gray-${mode=== false? "200" : "900"}`}>You need to Login to be able to edit this product!</h2> 
                     }
                 </div>
             }

@@ -24,10 +24,10 @@ export default function Home() {
           <div className="relative rounded-full px-3 py-2 hidden sm:mb-8 sm:flex sm:justify-center">
           </div>
           <div className="text-center">
-            <h1 className={`text-3xl font-bold tracking-tight text-gray-${mode=== false? "300" : "900"} sm:text-6xl`}>
+            <h1 className={`text-3xl font-bold tracking-tight text-gray-${mode=== false? "200" : "900"} sm:text-6xl`}>
               Online Catalog for finding greate products and create one!
             </h1>
-            <p className={`mt-6 text-lg leading-8 text-gray-${mode=== false? "300" : "900"}`}>
+            <p className={`mt-6 text-lg leading-8 text-gray-${mode=== false? "200" : "900"}`}>
               Here you can find the right product for your 
               <ReactTyped className="pl-1" strings={['Home','Garden','Work']} typeSpeed={130} backSpeed={140} loop/>
             </p>

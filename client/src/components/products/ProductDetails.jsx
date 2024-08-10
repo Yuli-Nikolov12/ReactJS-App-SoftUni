@@ -63,7 +63,7 @@ export default function ProductDetails()
                 />
             </div>
             <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-                <h2 className={`flex pb-10 text-4xl font-bold tracking-tight text-gray-${mode=== false? "300" : "900"}`}>Product Details
+                <h2 className={`flex pb-10 text-4xl font-bold tracking-tight text-gray-${mode=== false? "200" : "900"}`}>Product Details
                     {isAdmin ? 
                     <div>
                         <span className='pl-2' />
@@ -97,19 +97,19 @@ export default function ProductDetails()
                     </div>
 
                     <div className="lg:col-span-2">
-                        <h2 className={`text-2xl font-extrabold text-gray-${mode=== false ? "300" : "900"}`}>{product.name}</h2>
+                        <h2 className={`text-2xl font-extrabold text-gray-${mode=== false ? "200" : "900"}`}>{product.name}</h2>
 
                         <div className="flex space-x-2 mt-4">
-                            <h4 className={`text-gray-${mode=== false ? "300" : "900"} text-base`}>{comments === undefined ? "0": Object.keys(comments).length } Reviews</h4>
+                            <h4 className={`text-gray-${mode=== false ? "200" : "900"} text-base`}>{comments === undefined ? "0": Object.keys(comments).length } Reviews</h4>
                         </div>
 
                         <div className="flex flex-wrap gap-4 mt-8">
-                            <p className={`text-gray-${mode=== false? "300" : "900"} text-3xl font-bold`}>{product.price}</p>
+                            <p className={`text-gray-${mode=== false? "200" : "900"} text-3xl font-bold`}>{product.price}</p>
                             <p className="text-gray-400 text-base"><strike>{'$'+String(numberTax)}</strike> <span className="text-sm ml-1">Tax included</span></p>
                         </div>
 
                         <div className="flex flex-wrap gap-4 mt-8">
-                            <h4 className={`text-gray-${mode=== false ? "300" : "900"} text-base`}>{product.details}</h4>
+                            <h4 className={`text-gray-${mode=== false ? "200" : "900"} text-base`}>{product.details}</h4>
                         </div>
 
                         <div className="flex flex-wrap gap-4 mt-8">
@@ -120,7 +120,7 @@ export default function ProductDetails()
                 <div className="mt-6 flex flex-wrap justify-center gap-6 p-4 mx-auto"></div>
                 
                 <div className="relative isolate grid items-start grid-cols-1 lg:grid-cols-5 gap-6 shadow-[0_5px_20px_3px_rgba(611,181,237,10)] pt-10 p-9 rounded-lg">
-                    <h4 className={`absolute p-3 text-2xl font-bold tracking-tight text-gray-${mode=== false? "300" : "900"}`}>Comments Section
+                    <h4 className={`absolute p-3 text-2xl font-bold tracking-tight text-gray-${mode=== false? "200" : "900"}`}>Comments Section
                         <span className='pl-5'></span>
                         {isAuthenticated &&
                             <button onClick={() => setShowModal(true)} type="button" className={`absolute relative text-sm px-2 py-1 bg-blue-600  hover:bg-blue-700 border border-blue-600 text-gray-200 rounded`}>Add comment</button>
@@ -132,8 +132,8 @@ export default function ProductDetails()
                             <div className="flex items-start">
                                 <img src="https://readymadeui.com/team-2.webp" className="w-12 h-12 rounded-full border-2 border-white" />
                                 <div className="ml-3">
-                                    <h4 className={`text-sm font-bold text-gray-${mode=== false? "300" : "900"}`}>{comment.emailAddress}</h4>
-                                    <p className={`text-sm mt-1 text-gray-${mode=== false? "300" : "900"}`}>{comment.text}</p>
+                                    <h4 className={`text-sm font-bold text-gray-${mode=== false? "200" : "900"}`}>{comment.emailAddress}</h4>
+                                    <p className={`text-sm mt-1 text-gray-${mode=== false? "200" : "900"}`}>{comment.text}</p>
                                 </div>
                             </div>
                         </div>
